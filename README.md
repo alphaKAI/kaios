@@ -26,9 +26,9 @@ exit: 終了します
   
 VERSION
 -----------------
-2013/4/2 0.0.1 alpha公開
-2013/4/2 0.0.3 echo mkdir cd rename実装
-2013/4/2 0.0.3FIX Linuxで動かなかったから修正
+2013/4/2 0.0.1 alpha公開  
+2013/4/2 0.0.3 echo mkdir cd rename実装  
+2013/4/2 0.0.3FIX Linuxで動かなかったから修正  
   
   
 注意事項
