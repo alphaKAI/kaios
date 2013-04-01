@@ -18,9 +18,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "os_s.h"
 #include "base64.h"//b64
 #define B64_VER 04//b64
-#define VER "0.0.1 alpha"
+#define VER "0.0.3 alpha"
 
 void pf(void);//b64
 
@@ -32,14 +33,23 @@ void about(void){
 
 void help(void){
 	printf("実装されているコマンド\n");
+	printf("echo 引数:　echoです まだリダイレクトは実装していません\n");
+	printf("mkdir 引数:　ディレクトリを作成します\n");
+	printf("cd 引数:　カレントディレクトリを変更します\n");
 	printf("date:　時刻を表示します\n");
 	printf("cat 引数(ファイル名):　引数のファイルの中身を表示します\n");
+	printf("rename 元ファイル名 当たらしいファイル名:　ファイル名変更\n");
 	printf("base64 引数:　未完成です 上手く動きません\n");
 	printf("help: この表示です\n");
+	printf("osver: バージョンを知ることができます\n");
 	printf("exit: 終了します\n");
 }
 
-int cat(const char *name){
+int cat(const char *cmdstr){
+	
+	char name[1000];
+	sscanf(cmdstr,"cat %s",name);
+	
 	//存在確認
 	if(check(name)==1){
 		if(result(name)==0){
@@ -54,6 +64,73 @@ int cat(const char *name){
 		return 1;
 	}
 	
+	return 0;
+}
+
+int rename_cmd(const char *cmdstr){
+	char oldname[1000]={"\0"};
+	char newname[1000]={"\0"};
+	// char *oldname;
+	// char *newname;
+
+	sscanf(cmdstr,"rename %s %s",oldname, newname);
+
+	if(check(oldname)==0){
+		printf("エラー ファイル名\"%s\"がカレントディレクトリに存在しません\n",oldname);
+	}
+	else{
+		if(rename(oldname,newname)==0){
+			printf("%sから%sに名前を変更/移動しました", oldname, newname);
+		}
+		else{
+			printf("名前の変更/移動に失敗しました");
+		}
+	}
+	return 0;
+}
+
+int echo_cmd(const char *cmdstr){
+	char echostr[1000];
+
+	sscanf(cmdstr,"echo %s",echostr);
+	printf("%s\n",echostr);
+	return 0;
+}
+
+int mkdir_cmd(const char *cmdstr){
+	char newdir[1000];
+
+	sscanf(cmdstr,"mkdir %s",newdir);
+#if _WIN32 || _WIN64
+	if(_mkdir(newdir)==0){
+		printf("ディレクトリ\"%s\"を作成しました\n",newdir);
+	}
+	else{
+		printf("ディレクトリ\"%s\"の作成に失敗しました\n",newdir);
+	}
+#endif
+#if __unix || __linux || __FreeBSD__ || __NetBSD__
+	if(mkdir(*(newdir + 1)，S_IRUSR | S_IWUSR | S_IXUSR |S_IRGRP | S_IWGRP | S_IXGRP |S_IROTH | S_IXOTH | S_IXOTH)==0){
+	printf('%sを作成しました\n'， *(nwedir + 1));
+    }
+    else {
+		printf('%sを作成できませんでした\n'， *(newdir + 1));
+		return_code = 1;
+	}
+#endif
+	return 0;
+}
+
+int cd_cmd(const char *cmdstr){
+	char newdir[1000];
+
+	sscanf(cmdstr,"cd %s",newdir);
+#if _WIN32 || _WIN64
+	_chdir(newdir);
+#endif
+#if __unix || __linux || __FreeBSD__ || __NetBSD__
+	chdir(*(newdir+1));
+#endif
 	return 0;
 }
 
@@ -207,3 +284,4 @@ void pf(void){
 		printf("-v  :  バージョン情報\n");
 		
 }
+

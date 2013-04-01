@@ -18,7 +18,10 @@ void about(void);
 void help(void);
 //base64
 int base64(int argc, char *argv1, char *argv2, char *argv3);
-
+int cat(const char *cmdstr);
+int echo_cmd(const char *cmdstr);
+int rename_cmd(const char *cmdstr);
+int mkdir_cmd(const char *cmdstr);
 //Program
 int main(int args,char *argv[]){
 
@@ -73,14 +76,23 @@ int main(int args,char *argv[]){
 		if(strcmp(cmdstr,"osver")==0){
 			about();
 		}
+		else if(strstr(cmdstr,"echo")!=NULL){
+			echo_cmd(cmdstr);
+		}
 		else if(strcmp(cmdstr,"date")==0){
 			printf("%s\n",now_time_string());
 		}
 		else if(strstr(cmdstr,"cat")!=NULL){
-			//kernel.cに関数を作成
-			//ファイル名分解
-			sscanf(cmdstr,"cat %s",filename);
-			cat(filename);
+			cat(cmdstr);
+		}
+		else if(strstr(cmdstr,"mkdir")!=NULL){	
+			mkdir_cmd(cmdstr);
+		}
+		else if(strstr(cmdstr,"cd")!=NULL){	
+			cd_cmd(cmdstr);
+		}
+		else if(strstr(cmdstr,"rename")!=NULL){
+			rename_cmd(cmdstr);
 		}
 		else if(strstr(cmdstr,"base64")!=NULL){
 			//分解
