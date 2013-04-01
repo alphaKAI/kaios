@@ -21,12 +21,12 @@
 #include "os_s.h"
 #include "base64.h"//b64
 #define B64_VER 04//b64
-#define VER "0.0.3 alpha"
+#define PT_VER "0.0.3 alpha"
 
 void pf(void);//b64
 
 void about(void){
-	printf("Kai OS VERSION: %s\n", VER);
+	printf("Kai OS VERSION: %s\n", PT_VER);
 	printf("Copyleft (C) α改 alpha_kai_NET 2012-2013 http://alpha-kai-net.info\n");
 	printf("実装されているコマンドの一覧/使い方はhelpコマンドで確認できます\n");
 }
@@ -110,12 +110,11 @@ int mkdir_cmd(const char *cmdstr){
 	}
 #endif
 #if __unix || __linux || __FreeBSD__ || __NetBSD__
-	if(mkdir(*(newdir + 1)，S_IRUSR | S_IWUSR | S_IXUSR |S_IRGRP | S_IWGRP | S_IXGRP |S_IROTH | S_IXOTH | S_IXOTH)==0){
-	printf('%sを作成しました\n'， *(nwedir + 1));
-    }
-    else {
-		printf('%sを作成できませんでした\n'， *(newdir + 1));
-		return_code = 1;
+	if(mkdir(newdir,777)==NULL){
+		printf("%sを作成しました\n",newdir);
+	}
+	else {
+		printf("%sを作成できませんでした\n",newdir);
 	}
 #endif
 	return 0;
@@ -270,7 +269,7 @@ int base64(int argc, char *argv1, char *argv2, char *argv3){
 
 void pf(void){
 
-		printf("簡易base64エンコーダ/デコーダ VER:0.0%d\n", VER);
+		printf("簡易base64エンコーダ/デコーダ VER:0.0%d\n", B64_VER);
 		printf("作者:α改 @alpha_kai_NET\n\n");
 		printf("使用方法:\n");
 		printf("COMMAND : base64 [Option] [String] [OUTPUTFILENAME]\n");

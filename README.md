@@ -28,6 +28,7 @@ VERSION
 -----------------
 2013/4/2 0.0.1 alpha公開
 2013/4/2 0.0.3 echo mkdir cd rename実装
+2013/4/2 0.0.3FIX Linuxで動かなかったから修正
   
   
 注意事項
@@ -47,12 +48,12 @@ COPYRIGHT (C) α改 @alpha_kai_NET 2012-2013 http://alha-kai-net.info
   
 つかいかた
 -------------------
-Windowsなら簡単です  
-テキトーにSugarlessのフォルダの中のファイルをリンクなり何なりしてSugarless.libを作成して  
-my_lib.cからmy_lib.libをつくってからSugarlessの中のcompiler.cmdをルートディレクトリにもってきて  
-compile.batを実行すればコンパイルできます  
-batなのはMakefileの書き方がわからないから  
-因みに、その他のOSでは適当なコンパイラで上記の手順を踏めばできるかと(gccとかar rvなりなんなりで)    
+Windowsの場合  
+Sugarlessのフォルダの中のbase64.hとcompiler.cmdをkaiosのルートディレクトリにコピー  
+そしてcmdを起動して展開したkaiosのディレクトリ(↑この時にいた場所)に移動して  
+いっかいcompiler.batを実行してからcompile.batをそのcmdで実行すればコンパイルできます  
+Linuxの場合  
+展開したディレクトリにターミナルで移動してcmpile.shをchmod 777で権限を与え実行コンパイルできます  
   
   
 動作環境及び開発環境
@@ -60,7 +61,9 @@ batなのはMakefileの書き方がわからないから
 開発及び動作確認は  
 Windows8 Pro x64  
 Visual Studio2012 Professional(cl.exe)  
- 
+UbuntuServer 12.10 x86_64  
+gcc バージョン 4.7.2 (Ubuntu/Linaro 4.7.2-2ubuntu1)  
+  
   
 作者 WEB SITE
 -------------------

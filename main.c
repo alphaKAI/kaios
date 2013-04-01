@@ -43,8 +43,8 @@ int main(int args,char *argv[]){
 	LPDWORD lpnSize;
 #endif
 #if __unix || __linux || __FreeBSD__ || __NetBSD__
-	char pcname[100];
-	char username[100];
+	char *pcname;
+	char *username;
 #endif
 	
 	lp=1;
