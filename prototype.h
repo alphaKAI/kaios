@@ -11,7 +11,7 @@ void echo_cmd(const char *cmdstr);
 void mkdir_cmd(const char *cmdstr);
 void rmdir_cmd(const char *cmdstr);
 void cd_cmd(const char *cmdstr);
-void ls_cmd(void);
+void ls_cmd(const char *);
 void rm_cmd(const char *cmdstr);
 
 //マクロ#
@@ -19,36 +19,39 @@ void rm_cmd(const char *cmdstr);
 
 // UNIX
 #if __unix
-#define OS "UNIX"
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
+	#define OS "UNIX"
+	#include <unistd.h>
+	#include <sys/stat.h>
+	#include <sys/types.h>
 #endif
+
 // Linux
 #if __linux
-#define OS "Linux"
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
+	#define OS "Linux"
+	#include <unistd.h>
+	#include <sys/stat.h>
+	#include <sys/types.h>
 #endif
+
 //Free BSD
 # if __FreeBSD__
-#define OS "FreeBSD"
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
+	#define OS "FreeBSD"
+	#include <unistd.h>
+	#include <sys/stat.h>
+	#include <sys/types.h>
 #endif
+
 //NetBSD
 #if __NetBSD__
-#define OS "NetBSD"
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
+	#define OS "NetBSD"
+	#include <unistd.h>
+	#include <sys/stat.h>
+	#include <sys/types.h>
 #endif
+
 // Windows
 #if _WIN32 || _WIN64
-#define OS "Windows"
-#include <windows.h>
-#include <direct.h>
-#define _WIN32_WINNT 0x0400
+	#define OS "Windows"
+	#include <windows.h>
+	#include <direct.h>
 #endif

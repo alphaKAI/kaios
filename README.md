@@ -39,7 +39,8 @@ VERSION
   
 LICENCE
 -----------------
-Sugarless<http://ishibasystems.ikaduchi.com/downloads/d_8/main.htmlSugarless>12 著作者 石橋祥太 / 藤代晴嵐 LICENSE: NYSL Version 0.9982  
+Sugarless<http://ishibasystems.ikaduchi.com/downloads/d_8/main.htmlSugarless>12
+著作者 石橋祥太 / 藤代晴嵐 LICENSE: NYSL Version 0.9982  
 Sugarless12はファイルを必要最低限にしてあります  
 readme.txtがSugarless12フォルダにreadme.txtが入っていますのでそちらもお読みください  
 本プログラムは GPLv3 LICENSEです
@@ -75,4 +76,5 @@ Github <https://github.com/alphaKAI>
 Mail to <alpha.kai.net@alpha-kai-net.info>
   
   
-COPYRIGHT (C) α改 @alpha_kai_NET 2012-2013 http://alha-kai-net.info  
+COPYRIGHT (C) α改 @alpha_kai_NET 2012-2013 http://alha-kai-net.info
+COPYLEFT (C) 石橋祥太 2013 http://ishibasystems.ikaduchi.com
