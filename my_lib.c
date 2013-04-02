@@ -81,15 +81,15 @@ int check(const char *name){
 int del(const char *name){
 	int var;
 	
-  if( remove( name ) == 0 ){
-    printf( "%sファイルを削除しました\n", name);
-	var=1;
-  }
-  else{
-    printf( "ファイル削除に失敗しました\n");
-	var=0;
-  }
-  return var;
+	if(remove(name)==0){
+		printf( "%sファイルを削除しました\n", name);
+		var=1;
+	}
+	else{
+		printf( "ファイル削除に失敗しました\n");
+		var=0;
+	}
+	return var;
 }
 
 /* 結果をリザルトを読み込む */

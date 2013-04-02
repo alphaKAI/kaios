@@ -1,11 +1,11 @@
 ﻿
-@SET CC=compiler.cmd
+@SET CC=cl
 @SET PART1=main
 @SET PART2=kernel
 @SET SRC=.c
 @SET OBJ=.obj
 @SET PROG=kaios
-@SET LIBS=my_lib.lib Advapi32.lib sugarless12.lib
+@SET LIBS=my_lib.lib Advapi32.lib Kernel32.lib
 
 @if "%2"=="" goto defo
 @if "%2"=="main" goto main

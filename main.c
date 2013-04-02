@@ -6,36 +6,14 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "os_s.h"
-#include "my_lib.h"
+#include "prototype.h"
 
-#define VER "0.0.1 alpha"
-//Prototype
-void about(void);
-void help(void);
-//base64
-int base64(int argc, char *argv1, char *argv2, char *argv3);
-int cat(const char *cmdstr);
-int echo_cmd(const char *cmdstr);
-int rename_cmd(const char *cmdstr);
-int mkdir_cmd(const char *cmdstr);
 //Program
-int main(int args,char *argv[]){
+int main(main){
 
-	int i,t;
 	int lp;
 	char cmdstr[10000];
 	char path[1000];
-	char filename[1000];
-	char b64str[1000];
-	char *b64opt;
-	char *b64arg;
-	char *b64optf;
-	char *tok;
-	char s2[] = " ";
 	
 #if _WIN32 || _WIN64
 	LPTSTR pcname[100];
@@ -48,7 +26,6 @@ int main(int args,char *argv[]){
 #endif
 	
 	lp=1;
-	t=0;
 	about();
 	printf("\nターミナルエミュレータ見習い\n");
 	printf("このバイナリがコンパイルされた環境:%s\n\n",OS);
@@ -88,33 +65,29 @@ int main(int args,char *argv[]){
 		else if(strstr(cmdstr,"mkdir")!=NULL){	
 			mkdir_cmd(cmdstr);
 		}
+		else if(strstr(cmdstr,"rmdir")!=NULL){
+			rmdir_cmd(cmdstr);
+		}
 		else if(strstr(cmdstr,"cd")!=NULL){	
 			cd_cmd(cmdstr);
 		}
 		else if(strstr(cmdstr,"rename")!=NULL){
 			rename_cmd(cmdstr);
 		}
-		else if(strstr(cmdstr,"base64")!=NULL){
-			//分解
-			tok = strtok(cmdstr,s2);
-			while(tok!=NULL){
-				tok = strtok(NULL,s2);
-				t++;//区切りの数
+		else if(strstr(cmdstr,"ls")!=NULL){
+			if(strlen(cmdstr)==2){
+				sprintf(cmdstr,"ls %s",path);
 			}
-			if(t==3){
-				sscanf(cmdstr,"base64 %s %s", b64opt, b64arg);
-				b64optf="";
-			}
-			if(t==4){
-				sscanf(cmdstr,"base64 %s %s %s", b64opt, b64arg,b64optf);
-			}
-			else{
-				b64opt="";
-				b64arg="";
-				b64optf="";
-			}
-			printf("IN=>%d %s %s %s\n",t,b64opt,b64arg,b64optf);
-			base64(t,b64opt,b64arg,b64optf);
+			ls_cmd(cmdstr);
+			#if _WIN32 || _WIN64
+			SetCurrentDirectory(path);
+			#endif
+			#if __unix || __linux || __FreeBSD__ || __NetBSD__
+			cd_cmd(path);
+			#endif
+		}
+		else if(strstr(cmdstr,"rm")!=NULL){
+			rm_cmd(cmdstr);
 		}
 		else if(strcmp(cmdstr,"help")==0){
 			help();
@@ -136,6 +109,5 @@ int main(int args,char *argv[]){
 		printf("\n");
 		lp++;
 	}
-	t=0;
 	return 0;
 }
