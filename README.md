@@ -29,7 +29,8 @@ VERSION
 2013/4/2 0.0.1 alpha - 公開  
 2013/4/2 0.0.3 alpha - echo mkdir cd rename実装  
 2013/4/2 0.0.3FIX alpha - Linuxで動かなかったから修正  
-2013/4/2 0.0.5 alpha - ls rm rmdirの実装
+2013/4/2 0.0.5 alpha - ls rm rmdirの実装  
+2013/4/2 0.0.5_FIX alpha - 石橋氏からのプルリクエストをマージ&READNEの表記を修正&cpmile.(bat|sh)の修正改行コードをLFに統一  
   
   
 注意事項
@@ -39,11 +40,7 @@ VERSION
   
 LICENCE
 -----------------
-Sugarless<http://ishibasystems.ikaduchi.com/downloads/d_8/main.htmlSugarless>12
-著作者 石橋祥太 / 藤代晴嵐 LICENSE: NYSL Version 0.9982  
-Sugarless12はファイルを必要最低限にしてあります  
-readme.txtがSugarless12フォルダにreadme.txtが入っていますのでそちらもお読みください  
-本プログラムは GPLv3 LICENSEです
+本プログラムは GPLv3 LICENSEです  
 GPLv3については同梱のLICENSEフォルダのLICENSE(原文)/LICENSE_ja(日本語訳)をご覧ください  
 COPYRIGHT (C) α改 @alpha_kai_NET 2012-2013 http://alha-kai-net.info  
   
@@ -76,5 +73,5 @@ Github <https://github.com/alphaKAI>
 Mail to <alpha.kai.net@alpha-kai-net.info>
   
   
-COPYRIGHT (C) α改 @alpha_kai_NET 2012-2013 http://alha-kai-net.info
+COPYRIGHT (C) α改 @alpha_kai_NET 2012-2013 http://alha-kai-net.info  
 COPYLEFT (C) 石橋祥太 2013 http://ishibasystems.ikaduchi.com

@@ -14,8 +14,8 @@ void cd_cmd(const char *cmdstr);
 void ls_cmd(const char *);
 void rm_cmd(const char *cmdstr);
 
-//マクロ#
-#define PT_VER "0.0.5 alpha"
+//マクロ
+#define PT_VER "0.0.5_FIX alpha"
 
 // UNIX
 #if __unix
