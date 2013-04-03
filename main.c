@@ -16,10 +16,11 @@ int main(main){
 	char path[1000];
 	
 #if _WIN32 || _WIN64
-	LPTSTR pcname[100];
-	LPSTR username[100];
-	LPDWORD lpnSize;
+	TCHAR pcname[100];
+	char username[100];
+	DWORD lpnSize;
 #endif
+
 #if __unix || __linux || __FreeBSD__ || __NetBSD__
 	char *pcname;
 	char *username;
