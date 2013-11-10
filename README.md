@@ -4,11 +4,13 @@ kaios
   
 概要
 ------------------
-OSとかかいてあるけどターミナルエミュレータもどきっぽいなにか  
-ぜんぜん実装できてません
-Cをコンパイルする環境があればうごくかと思われます  
+シェルもどきです  
+mainの方にはマルチプラットフォームで動く以前のKaiOSが入っています  
+現在はLinux向けのを開発していますのでlinuxのほうが最新です  
+ただし、linux版は書き換え途中のため動作しません(mainの方もですが)  
+Windowsでなら動きますので・・・  
   
-    
+  
 機能
 -----------------
 実装されているコマンド  
@@ -17,7 +19,7 @@ mkdir 引数:　ディレクトリを作成します
 cd 引数:　カレントディレクトリを変更します  
 date:　時刻を表示します  
 cat 引数(ファイル名):　引数のファイルの中身を表示します  
-rename 元ファイル名 当たらしいファイル名:　ファイル名変更　　
+rename 元ファイル名 当たらしいファイル名:　ファイル名変更  
 base64 引数:　未完成です 上手く動きません  
 help: この表示です  
 osver: バージョンを知ることができます  
@@ -31,47 +33,51 @@ VERSION
 2013/4/2 0.0.3FIX alpha - Linuxで動かなかったから修正  
 2013/4/2 0.0.5 alpha - ls rm rmdirの実装  
 2013/4/2 0.0.5_FIX alpha - 石橋氏からのプルリクエストをマージ&READNEの表記を修正&cpmile.(bat|sh)の修正改行コードをLFに統一  
+2013/11/10 0.0.7 alpha - Linux向け開発を重点的にすることに ディレクトリ構造を変えた 無駄なメモリ確保を省くように切り替え  
   
   
 注意事項
 -----------------
-仕様としてechoはリダイレクト未対応ですしなおかつダブルクオーテーションで囲っても空白をシカトします　 
+機能はほとんど不完全な実装です  
+例えば、リダイレクトなど未対応ですし・・・  
   
   
 LICENCE
 -----------------
 本プログラムは GPLv3 LICENSEです  
 GPLv3については同梱のLICENSEフォルダのLICENSE(原文)/LICENSE_ja(日本語訳)をご覧ください  
-COPYRIGHT (C) α改 @alpha_kai_NET 2012-2013 http://alha-kai-net.info  
+Copyleft alphaKAI 2012-2013 http://alha-kai-net.info  
+linux/lib/getinf.cは陰羽氏によるものでNYSLによって提供されています  
   
   
 つかいかた
 -------------------
-Windowsの場合  
-Sugarlessのフォルダの中のbase64.hとcompiler.cmdをkaiosのルートディレクトリにコピー  
-そしてcmdを起動して展開したkaiosのディレクトリ(↑この時にいた場所)に移動して  
-いっかいcompiler.batを実行してからcompile.batをそのcmdで実行すればコンパイルできます  
-Linuxの場合  
-展開したディレクトリにターミナルで移動してcmpile.shをchmod 777で権限を与え実行コンパイルできます  
+Windowsの場合:  
+.cファイルを全部オブジェクトファイルにしてそれをリンクすれば動きます  
+Linux等の場合:  
+適切な権限をcompile.shに与えて実行すればコンパイルできます  
   
   
 動作環境及び開発環境
 --------------------
 開発及び動作確認は  
-Windows8 Pro x64  
+linux,main:  
+Arch Linux 3.11.6-1-ARCH x86_64  
+gcc バージョン 4.8.2 (GCC)  
+main:  
+Windows8.1 Pro x64  
 Visual Studio2012 Professional(cl.exe)  
-UbuntuServer 12.10 x86_64  
-gcc バージョン 4.7.2 (Ubuntu/Linaro 4.7.2-2ubuntu1)  
   
-  
-作者 WEB SITE
+   
+WEB SITE
 -------------------
-個人ブログ <http://blog.alpha-kai-net.info>  
+Blog <http://blog.alpha-kai-net.info>  
 HP <http://alpha-kai-net.info>  
 Twitter <http://twitter.com/alpha_kai_net>  
 Github <https://github.com/alphaKAI>  
-Mail to <alpha.kai.net@alpha-kai-net.info>
+Mail to <alpha.kai.net@alpha-kai-net.info>  
   
   
-COPYRIGHT (C) α改 @alpha_kai_NET 2012-2013 http://alha-kai-net.info  
-COPYLEFT (C) 石橋祥太 2013 http://ishibasystems.ikaduchi.com
+Copyleft (C) α改 @alpha_kai_NET 2012-2013 http://alha-kai-net.ino  
+Copyleft (C) 石橋祥太 2013 http://ishibasystems.ikaduchi.com  
+Copyleft (C) kagehaq 2013 kg9h.net  
