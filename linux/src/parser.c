@@ -65,7 +65,7 @@ int parser(char* cmdstr){
 	char **array=NULL;
 	int i;
 	
-	MAX_WORD=match_c(cmdstr," ")+1;
+	MAX_WORD=match_c(cmdstr," ")+2;
 	printf("%d\n",match_c(cmdstr," "));
 
 	array=split(cmdstr," ");
