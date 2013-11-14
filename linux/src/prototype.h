@@ -9,8 +9,12 @@
 #include <dirent.h>
 #include <pwd.h>
 
-void about(void);
-void help(void);
+void ShellLine(int loop_count);
+char* MyGetInfi(FILE *fp);
+int match_c(char* str,char* pattern);
+
+void about();
+void help();
 int cat(const char *cmdstr);
 void rename_cmd(const char *cmdstr);
 void echo_cmd(const char *cmdstr);
@@ -20,7 +24,7 @@ void cd_cmd(const char *cmdstr);
 void ls_cmd(const char *);
 void rm_cmd(const char *cmdstr);
 
-#define PT_VER "0.0.7 alpha for " OS
+#define PT_VER "0.0.7 rv.002 alpha for " OS
 
 #if __linux
 	#define OS "Linux"
