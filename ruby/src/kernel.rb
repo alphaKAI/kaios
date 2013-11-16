@@ -10,7 +10,8 @@ class KaiKernel
 		inside_funcs={
 		 "help" => "Show Command List",
 		 "exit" => "Exit KaiOS",
-		 "cd" => "Like UNIX cd Usage:cd Directory Name"
+		 "cd" => "Like UNIX cd Usage:cd Directory Name",
+		 "date" => "Show now date. You can change format. Usage: date option[format]"
 		}
 		puts "Coomand List"
 
@@ -30,5 +31,22 @@ class KaiKernel
 			}
 			puts "\t#{data.split(".")[0]} - #{desc}"
 		}
+	end
+	def exit
+		puts "ByeBye :-)"
+	end
+	def date(format = "%Y年 %m月 %d日 %A曜日 %H:%M:%S %Z")
+		date_ = {
+			"Sunday" => "日",
+			"Monday" => "月",
+			"Tuesday" => "火",
+			"Wednesday" => "水",
+			"Thursday" => "木",
+			"Friday" => "金",
+			"Saturday" => "土"
+		}
+		format = format.gsub(/(%A|%a)/,date_[Time.now.strftime("%A")])
+
+		puts Time.now.strftime(format)
 	end
 end

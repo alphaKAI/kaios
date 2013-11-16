@@ -16,6 +16,8 @@ class CommandParser
 						return nil
 					end
 					Dir.chdir(line[1])
+			when /date/
+				@kernel.date
 			else
 				st=false
 				Dir.entries($install_path).each{|data|

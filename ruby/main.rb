@@ -7,7 +7,7 @@ require_relative "./src/kernel.rb"
 	Copyleft (C) alphaKAI 2013 http://alpha-kai-net.info
 	UNIX Shell Environment KaiOS in Ruby
 =end
-$ver = "0.0.1 rb"
+$ver = "0.0.2 rb"
 $install_path = "#{Dir.pwd}/bin"
 class MainFunctions
 	def initialize
