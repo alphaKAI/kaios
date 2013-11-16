@@ -9,9 +9,10 @@
 #include <dirent.h>
 #include <pwd.h>
 
-void ShellLine(int loop_count);
+int ShellLine(int loop_count,int error);
 char* MyGetInfi(FILE *fp);
 int match_c(char* str,char* pattern);
+int parser(char* cmdstr);
 
 void about();
 void help();

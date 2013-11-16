@@ -43,15 +43,15 @@ int match_c(char* str,char* pattern){
 	char* tmp_s;
 
 	for(i=0;i<=s_length;i++){
-		tmp_s=(char*)malloc(p_length+2);
+		tmp_s=(char*)malloc(sizeof(char)*(p_length+2));
 
-			for(j=0;j<p_length;j++){
-				tmp_s[j]=str[i+j];
-			}
+		for(j=0;j<p_length;j++){
+			tmp_s[j]=str[i+j];
+		}
 
-			if(strcmp(tmp_s,pattern)==0){
-				count+=1;
-			}
+		if(strcmp(tmp_s,pattern)==0){
+			count+=1;
+		}
 		free(tmp_s);
 	}
 
@@ -62,19 +62,44 @@ char* cmd_parser(char *cmdstr, char *path){
 }
 
 int parser(char* cmdstr){
-	char **array=NULL;
+	char** array=NULL;
+	char* tmp_s;
 	int i;
-	
+
 	MAX_WORD=match_c(cmdstr," ")+2;
 	printf("%d\n",match_c(cmdstr," "));
 
 	array=split(cmdstr," ");
 	for(i=0;array[i]!=NULL;i++){
 		printf("%2d: %s\n",i,array[i]);
+		
 	}
+//	printf("%s\n",tmp_s);
+	//execute(array[0],tmp_s);
 
 	split_free(array);
-	array=NULL;
+	array = NULL;
+}
+int execute(char* cmd, char* args){
+	char* arg;
+	int i = 0;
+	int length;
+	
+	//arg=(char*)malloc(strlen((args[0])+1));
+	printf("%s\n",cmd);
+
+	printf("1\n");
+	for(i = 0; args[i] != NULL; i++){
+		printf("2\n");
+		
+		length += strlen(args[i]);
+		arg = (char*)realloc(arg,length+1);
+
+		strcat(arg," ");
+		strcat(arg,args[i]);
+	}
+	
+	printf("%s\n",arg);
 }
 /*
 char* doccomand(char* command,char* args){

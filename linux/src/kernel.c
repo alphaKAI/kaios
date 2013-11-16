@@ -10,7 +10,7 @@
 void about(void){
 	printf("Kai OS VERSION: %s\n", PT_VER);
 	printf("Copyleft (C) α改 alpha_kai_NET 2012-2013 http://alpha-kai-net.info\n");
-	printf("実装されているコマンドの一覧/使い方はhelpコマンドで確認できます\n");
+	//printf("実装されているコマンドの一覧/使い方はhelpコマンドで確認できます\n");
 }
 
 void help(void){
