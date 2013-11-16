@@ -1,12 +1,14 @@
 #encoding:utf-8
-require_relative "./parser.rb"
-require_relative "./kernel.rb"
+require "find"
+require_relative "./src/parser.rb"
+require_relative "./src/kernel.rb"
 
 =begin
 	Copyleft (C) alphaKAI 2013 http://alpha-kai-net.info
 	UNIX Shell Environment KaiOS in Ruby
 =end
 $ver = "0.0.1 rb"
+$install_path = "#{Dir.pwd}/bin"
 class MainFunctions
 	def initialize
 		@parser = CommandParser.new
