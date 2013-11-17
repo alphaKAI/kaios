@@ -1,9 +1,9 @@
 class KaiKernel
-	def pronpt
+	def prompt
 		if Process::UID.eid == 0
-			return "#"
+			return "# "
 		else
-			return "%"
+			return "% "
 		end
 	end
 	def help
@@ -34,6 +34,7 @@ class KaiKernel
 	end
 	def exit
 		puts "ByeBye :-)"
+		Kernel::exit
 	end
 	def date(format = "%Y年 %m月 %d日 %A曜日 %H:%M:%S %Z")
 		date_ = {

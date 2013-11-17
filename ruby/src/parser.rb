@@ -20,9 +20,8 @@ class CommandParser
 				@kernel.date
 			else
 				st=false
-				Dir.entries($install_path).each{|data|
-					next if data == "." || data == ".."
-					if line[0] == data.delete(".rb")
+				self.cmdlist.each{|data|
+					if line[0] == data.split(".")[0]
 						line.delete_at(0)
 						system("ruby #{$install_path}/#{data} #{line.join(" ")}")
 						st=true
@@ -33,5 +32,13 @@ class CommandParser
 					puts "\'#{line[0]}\'はKaiOSに対して有効なコマンドではありません" unless line[0].to_s.empty?
 				end
 		end
+	end
+	def cmdlist
+		array = Array.new
+		Dir.entries($install_path).each{|data|
+			next if data == "." || data == ".."
+			array << data
+		}
+		return array
 	end
 end

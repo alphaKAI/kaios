@@ -1,5 +1,6 @@
 #encoding:utf-8
 require "find"
+require "readline"
 require_relative "./src/parser.rb"
 require_relative "./src/kernel.rb"
 
@@ -7,7 +8,7 @@ require_relative "./src/kernel.rb"
 	Copyleft (C) alphaKAI 2013 http://alpha-kai-net.info
 	UNIX Shell Environment KaiOS in Ruby
 =end
-$ver = "0.0.2 rb"
+$ver = "0.0.2p20 rb"
 $install_path = "#{Dir.pwd}/bin"
 class MainFunctions
 	def initialize
@@ -37,21 +38,27 @@ class MainFunctions
 	end
 	def ShellLine(loop_count,error)
 		path = Dir.pwd
-		pcname = File.read("/etc/hostname")
+		pcname = `hostname`.delete("\n")
 		uname = ENV["USER"]
-		
-		pcname[pcname.size-1] = "\0"
 
 		unless error == 0
 			print "#{error} "
 		end
+		
+		commands = @parser.cmdlist
+		tmp_ary = Array.new
 
-		print "\r#{uname}@#{pcname} #{path} #{@kernel.pronpt()} "
+		commands.each{|a|
+			tmp_ary <<  a.split(".")[0]
+		}
+		commands = tmp_ary
+		Readline.completion_proc = proc{|word|
+			commands.grep(/\A#{Regexp.quote word}/)
+		}
+		input = Readline.readline("\r#{uname}@#{pcname} #{path} #{@kernel.prompt} ",true)
 
-		input = STDIN.gets.chomp
 		@shellstack << input
 		@parser.parser(input)
-	
 		puts ""
 	end
 end
