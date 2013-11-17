@@ -8,8 +8,9 @@ require_relative "./src/kernel.rb"
 	Copyleft (C) alphaKAI 2013 http://alpha-kai-net.info
 	UNIX Shell Environment KaiOS in Ruby
 =end
-$ver = "0.0.2p20 rb"
+$ver = "0.0.3 rb"
 $install_path = "#{Dir.pwd}/bin"
+$pc_user_color = 36
 class MainFunctions
 	def initialize
 		@parser = CommandParser.new
@@ -41,6 +42,9 @@ class MainFunctions
 		pcname = `hostname`.delete("\n")
 		uname = ENV["USER"]
 
+		if path =~ /\/home\/#{uname}/
+			path.gsub!("/home/#{uname}","~")
+		end
 		unless error == 0
 			print "#{error} "
 		end
@@ -52,10 +56,12 @@ class MainFunctions
 			tmp_ary <<  a.split(".")[0]
 		}
 		commands = tmp_ary
+		commands += Dir.entries(Dir.pwd)
+
 		Readline.completion_proc = proc{|word|
 			commands.grep(/\A#{Regexp.quote word}/)
 		}
-		input = Readline.readline("\r#{uname}@#{pcname} #{path} #{@kernel.prompt} ",true)
+		input = Readline.readline("\r\e[#{$pc_user_color}m#{uname}@#{pcname} \e[31m[KaiOS]\e[0m \e[1m#{path}\e[0m #{@kernel.prompt}",true)
 
 		@shellstack << input
 		@parser.parser(input)

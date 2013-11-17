@@ -1,3 +1,4 @@
+#encoding:utf-8
 class KaiKernel
 	def prompt
 		if Process::UID.eid == 0
@@ -11,7 +12,10 @@ class KaiKernel
 		 "help" => "Show Command List",
 		 "exit" => "Exit KaiOS",
 		 "cd" => "Like UNIX cd Usage:cd Directory Name",
-		 "date" => "Show now date. You can change format. Usage: date option[format]"
+		 "date" => "Show now date. You can change format. Usage: date option[format]",
+		 "version" => "Show current KaiOS Version",
+		 "Only Directory Name ex:~/" => "Auto cd",
+		 ".Installed of your machine command  eg: .ls" => "Execute as extend command"
 		}
 		puts "Coomand List"
 
@@ -35,6 +39,10 @@ class KaiKernel
 	def exit
 		puts "ByeBye :-)"
 		Kernel::exit
+	end
+	def version
+		puts "KaiOS in Ruby VERSION:#{$ver}"
+		puts "Copyleft (C) alphaKAI 2013 http://alpha-kai-net.info"
 	end
 	def date(format = "%Y年 %m月 %d日 %A曜日 %H:%M:%S %Z")
 		date_ = {

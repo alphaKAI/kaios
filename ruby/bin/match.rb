@@ -7,8 +7,6 @@
 	DevTest
 =end
 # DESCRIPTION Compare strings and return match counts Usage:match strings pattern
-string = ARGV[0].to_s
-pattern = ARGV[1].to_s
 def match(str,pattern)
 	p_length = pattern.length
 	s_lebgth = str.length
@@ -26,19 +24,22 @@ def match(str,pattern)
 	 
 	return count
 end
-
-puts "Match Count => #{match(string,pattern)}"
-print "Strings:"
-ary=string.split(pattern)
-if ary.size == 0
-	print "\e[31m#{pattern}\e[0m"
-else
-	ary.each{|s|
-		if s.empty?
-			print "\e[31m#{pattern}\e[0m"
-		else
-			print s
-		end
-	}
+if __FILE__ == $0
+	string = ARGV[0].to_s
+	pattern = ARGV[1].to_s
+	puts "Match Count => #{match(string,pattern)}"
+	print "Strings:"
+	ary=string.split(pattern)
+	if ary.size == 0
+		print "\e[31m#{pattern}\e[0m"
+	else
+		ary.each{|s|
+			if s.empty?
+				print "\e[31m#{pattern}\e[0m"
+			else
+				print s
+			end
+		}
+	end
+	print " Pattern:#{pattern}\n"
 end
-print " Pattern:#{pattern}\n"

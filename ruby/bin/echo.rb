@@ -1,4 +1,4 @@
-y#encoding:utf-8
+#encoding:utf-8
 
 =begin
 	Copyleft (C) alphaKAI 2013 http://alpha-kai-net.info
